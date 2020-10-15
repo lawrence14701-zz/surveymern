@@ -18,7 +18,6 @@ mongoose
 	.catch((err) => console.log(err));
 
 server.use(passport.initialize());
-
 server.use('/api/users', users);
 server.use('/api/tweets', tweets);
 
