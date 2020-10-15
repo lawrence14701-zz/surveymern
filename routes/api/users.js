@@ -8,14 +8,6 @@ const validateRegisterInput = require('../../validation/register');
 const validateLoginInput = require('../../validation/login');
 const passport = require('passport');
 
-router.get('/current', passport.authenticate('jwt', { session: false }), (req, res) => {
-	res.json({
-		id: req.user.id,
-		handle: req.user.handle,
-		email: req.user.email,
-	});
-});
-
 router.post('/register', (req, res) => {
 	const { errors, isValid } = validateRegisterInput(req.body);
 
@@ -64,12 +56,12 @@ router.post('/login', (req, res) => {
 		return res.status(400).json(errors);
 	}
 
-	const handle = req.body.handle;
+	const email = req.body.email;
 	const password = req.body.password;
 
-	User.findOne({ handle }).then((user) => {
+	User.findOne({ email }).then((user) => {
 		if (!user) {
-			errors.handle = 'This user does not exist';
+			errors.email = 'This user does not exist';
 			return res.status(400).json(errors);
 		}
 
