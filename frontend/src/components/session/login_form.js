@@ -1,5 +1,7 @@
 import React from 'react';
 import { withRouter } from 'react-router-dom';
+import Wrapper from './inputWrapper';
+import loginStyles from './loginStyles.module.css';
 
 class LoginForm extends React.Component {
 	constructor(props) {
@@ -58,18 +60,25 @@ class LoginForm extends React.Component {
 
 	render() {
 		return (
-			<div>
+			<div className={loginStyles.loginContainer}>
 				<form onSubmit={this.handleSubmit}>
-					<div>
-						<input type="text" value={this.state.email} onChange={this.update('email')} placeholder="Email" />
-						<br />
-						<input
-							type="password"
-							value={this.state.password}
-							onChange={this.update('password')}
-							placeholder="Password"
-						/>
-						<br />
+					<div className={loginStyles.inputsContainer}>
+						<Wrapper label="Phone, Email, Or Username">
+							<input
+								className={loginStyles.input}
+								type="text"
+								value={this.state.email}
+								onChange={this.update('email')}
+							/>
+						</Wrapper>
+						<Wrapper label="Password">
+							<input
+								className={loginStyles.input}
+								type="password"
+								value={this.state.password}
+								onChange={this.update('password')}
+							/>
+						</Wrapper>
 						<input type="submit" value="Submit" />
 						{this.renderErrors()}
 					</div>
