@@ -11,6 +11,7 @@ class LoginForm extends React.Component {
 			email: '',
 			password: '',
 			errors: {},
+			focused: true,
 		};
 
 		this.handleSubmit = this.handleSubmit.bind(this);
@@ -46,6 +47,9 @@ class LoginForm extends React.Component {
 
 		this.props.login(user);
 	}
+	focus() {
+		this.setState({ focused: true });
+	}
 
 	// Render the session errors if there are any
 	renderErrors() {
@@ -63,7 +67,7 @@ class LoginForm extends React.Component {
 			<div className={loginStyles.loginContainer}>
 				<form onSubmit={this.handleSubmit}>
 					<div className={loginStyles.inputsContainer}>
-						<Wrapper label="Phone, Email, Or Username">
+						<Wrapper active={this.state.focused} label="Phone, Email, Or Username">
 							<input
 								className={loginStyles.input}
 								type="text"
@@ -71,7 +75,7 @@ class LoginForm extends React.Component {
 								onChange={this.update('email')}
 							/>
 						</Wrapper>
-						<Wrapper label="Password">
+						<Wrapper active={this.state.focused} label="Password">
 							<input
 								className={loginStyles.input}
 								type="password"
