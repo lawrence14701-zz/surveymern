@@ -1,89 +1,116 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { withRouter } from 'react-router-dom';
+import IsSignedIn from '../../hooks/isSignedIn';
+import signUpStyles from './signUpStyles.module.css';
+import { MiniTweeter } from './svg';
+import Modal from './modal';
+import Wrapper from './inputWrapper';
 
-class SignupForm extends React.Component {
-	constructor(props) {
-		super(props);
-		this.state = {
-			email: '',
-			handle: '',
-			password: '',
-			password2: '',
-			errors: {},
-		};
+const SignupForm = (props) => {
+	const [email, setEmail] = useState('');
+	const [handle, setHandle] = useState('');
+	const [password, setPassword] = useState('');
+	const [password2, setPassword2] = useState('');
+	const [showModal, setShowModal] = useState(false);
+	const [activeEmail, setActiveEmail] = useState(false);
+	const [activePassword, setActivePassword] = useState(false);
+	const [activeHandle, setActiveHandle] = useState(false);
+	const [activePassword2, setActivePassword2] = useState(false);
 
-		this.handleSubmit = this.handleSubmit.bind(this);
-		this.clearedErrors = false;
-	}
+	const errors = IsSignedIn(props);
+	const { signUpFormContainer, containerCenter, textBig, textSmall, button, input, spacing, backDrop } = signUpStyles;
 
-	componentWillReceiveProps(nextProps) {
-		if (nextProps.signedIn === true) {
-			this.props.history.push('/login');
-		}
-
-		this.setState({ errors: nextProps.errors });
-	}
-
-	update(field) {
-		return (e) =>
-			this.setState({
-				[field]: e.currentTarget.value,
-			});
-	}
-
-	handleSubmit(e) {
+	const handleSubmit = (e) => {
 		e.preventDefault();
 		let user = {
-			email: this.state.email,
-			handle: this.state.handle,
-			password: this.state.password,
-			password2: this.state.password2,
+			email,
+			handle,
+			password,
+			password2,
 		};
 
-		this.props.signup(user, this.props.history);
-	}
+		props.signup(user, this.props.history);
+	};
 
-	renderErrors() {
-		return (
-			<ul>
-				{Object.keys(this.state.errors).map((error, i) => (
-					<li key={`error-${i}`}>{this.state.errors[error]}</li>
-				))}
-			</ul>
-		);
-	}
+	return (
+		<>
+			<div className={showModal && backDrop}>
+				<div className={signUpFormContainer}>
+					<div className={containerCenter}>
+						<MiniTweeter />
+						<div className={textBig}>
+							<span>See what's happening in the world right now</span>
+						</div>
+						<div className={textSmall}>
+							<span>Join Tweeter today</span>
+						</div>
+						<button onClick={(e) => setShowModal(true)} className={button} type="submit">
+							Sign Up
+						</button>
+					</div>
+				</div>
+			</div>
 
-	render() {
-		return (
-			<div className="signup-form-container">
-				<form onSubmit={this.handleSubmit}>
+			<Modal show={showModal}>
+				<form onSubmit={handleSubmit}>
 					<div className="signup-form">
-						<br />
-						<input type="text" value={this.state.email} onChange={this.update('email')} placeholder="Email" />
-						<br />
-						<input type="text" value={this.state.handle} onChange={this.update('handle')} placeholder="Handle" />
-						<br />
-						<input
-							type="password"
-							value={this.state.password}
-							onChange={this.update('password')}
-							placeholder="Password"
-						/>
-						<br />
-						<input
-							type="password"
-							value={this.state.password2}
-							onChange={this.update('password2')}
-							placeholder="Confirm Password"
-						/>
-						<br />
-						<input type="submit" value="Submit" />
-						{this.renderErrors()}
+						<div className={spacing}>
+							<Wrapper isActive={activeEmail} placeHolder="Email" width="100%">
+								<input
+									className={input}
+									onFocus={() => setActiveEmail(true)}
+									onBlur={() => setActiveEmail(false)}
+									type="text"
+									value={email}
+									onChange={(e) => setEmail(e.currentTarget.value)}
+								/>
+							</Wrapper>
+						</div>
+						<div className={spacing}>
+							<Wrapper isActive={activeHandle} placeHolder="Handle" width="100%">
+								<input
+									className={input}
+									type="text"
+									onFocus={() => setActiveHandle(true)}
+									onBlur={() => setActiveHandle(false)}
+									value={handle}
+									onChange={(e) => setHandle(e.currentTarget.value)}
+								/>
+							</Wrapper>
+						</div>
+						<div className={spacing}>
+							<Wrapper isActive={activePassword} placeHolder="Password" width="100%">
+								<input
+									className={input}
+									type="password"
+									onFocus={() => setActivePassword(true)}
+									onBlur={() => setActivePassword(false)}
+									value={password}
+									onChange={(e) => setPassword(e.currentTarget.value)}
+								/>
+							</Wrapper>
+						</div>
+						<div className={spacing}>
+							<Wrapper isActive={activePassword2} placeHolder="Confirm Password" width="100%">
+								<input
+									className={input}
+									type="password"
+									onFocus={() => setActivePassword2(true)}
+									onBlur={() => setActivePassword2(false)}
+									value={password2}
+									onChange={(e) => setPassword2(e.currentTarget.value)}
+								/>
+							</Wrapper>
+						</div>
+						<button onClick={(e) => setShowModal(true)} className={button} type="submit">
+							Sign Up
+						</button>
+						{errors}
 					</div>
 				</form>
-			</div>
-		);
-	}
-}
+			</Modal>
+		</>
+	);
+};
 
 export default withRouter(SignupForm);

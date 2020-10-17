@@ -11,10 +11,11 @@
 .inputsContainer {
 	display: flex;
 	flex-direction: row;
+	align-items: center;
 }
 
 .inputOuter {
-	width: 250px;
+	width: 100%;
 	flex-shrink: 1;
 	flex-grow: 1;
 }
@@ -67,4 +68,9 @@
 	color: white;
 	font-size: 15px;
 	height: 30px;
+}
+
+.active {
+	color: rgba(29, 161, 242, 1);
+	border-color: rgba(29, 161, 242, 1);
 }

@@ -1,16 +1,19 @@
 import React from 'react';
 import loginStyles from './loginStyles.module.css';
+import cx from 'classnames';
 
-const Wrapper = ({ children, label, active }) => {
-	console.log(active);
+const Wrapper = ({ children, placeHolder, isActive, width }) => {
+	const { inputOuter, inputInner, border, label, labelContainer, active, container } = loginStyles;
 	return (
-		<div className={active ? cx(loginStyles.inputOuter, loginStyles.active) : loginStyles.inputOuter}>
-			<div className={loginStyles.inputInner}>
-				<div className={loginStyles.border}>
-					<div className={loginStyles.labelContainer}>
-						<span className={loginStyles.label}>{label}</span>
+		<div style={{ width: `${width}` }}>
+			<div className={inputOuter}>
+				<div className={inputInner}>
+					<div className={isActive ? cx(border, active) : border}>
+						<div className={labelContainer}>
+							<span className={isActive ? cx(label, active) : label}>{placeHolder}</span>
+						</div>
+						{children}
 					</div>
-					{children}
 				</div>
 			</div>
 		</div>
