@@ -1,4 +1,4 @@
 .errorList {
   color: red;
-  display: flex;
+  white-space: nowrap;
 }

@@ -65,7 +65,10 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  min-width: 600px;
+  min-width: 320px;
+  width: 350px;
+  max-width: 350px;
+  z-index: 10;
   background: white;
   filter: blur(0);
   border-radius: 15px;

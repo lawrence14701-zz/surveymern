@@ -5,7 +5,12 @@
   float: left;
   z-index: 0;
 }
+.sectionMobile {
+  width: 100%;
+  height: 50vh;
+}
 .sectionLeft {
+  z-index: 0;
   background-color: rgb(113, 201, 248);
   position: relative;
   overflow: hidden;
