@@ -30,6 +30,6 @@ server.use(passport.initialize());
 server.use("/api/users", users);
 server.use("/api/tweets", tweets);
 
-const PORT = process.env.PORT || 5000;
+const port = process.env.PORT || 5000;
 
-server.listen(PORT, () => console.log(`Server is running on port ${PORT}`));
+server.listen(port, () => console.log(`Server is running on port ${port}`));
