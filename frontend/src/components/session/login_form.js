@@ -13,6 +13,7 @@ const LoginForm = (props) => {
     inputsFlexContainer,
     inputsContainer,
     space,
+    errorContainer,
     centerLogin,
   } = loginStyles;
   const { buttonOuter, textContainer, text } = loginButtonStyles;
@@ -48,50 +49,54 @@ const LoginForm = (props) => {
           }
         >
           <form onSubmit={handleSubmit}>
-            <div
-              className={width >= 1200 ? inputsContainer : inputsFlexContainer}
-            >
-              <Wrapper
-                padding={width <= 1200 ? "" : true}
-                isActive={activeEmail}
-                placeHolder="Phone, Email, Or Username"
-                width="250px"
+            <div className={errorContainer}>
+              <div
+                className={
+                  width >= 1200 ? inputsContainer : inputsFlexContainer
+                }
               >
-                <input
-                  onFocus={() => setActiveEmail(true)}
-                  onBlur={() => setActiveEmail(false)}
-                  className={input}
-                  type="text"
-                  value={email}
-                  onChange={(e) => setEmail(e.currentTarget.value)}
-                />
-              </Wrapper>
-              {width <= 1200 && <div className={space} />}
-              <Wrapper
-                padding={width <= 1200 ? "" : true}
-                isActive={activePassword}
-                placeHolder="Password"
-                width="250px"
-              >
-                <input
-                  onFocus={() => setActivePassword(true)}
-                  onBlur={() => setActivePassword(false)}
-                  className={input}
-                  type="password"
-                  value={password}
-                  onChange={(e) => setPassword(e.currentTarget.value)}
-                />
-              </Wrapper>
-              {width <= 1200 && <div className={space} />}
-              <button
-                onClick={() => setClicked(true)}
-                type="submit"
-                className={buttonOuter}
-              >
-                <div className={textContainer}>
-                  <span className={text}>Login</span>
-                </div>
-              </button>
+                <Wrapper
+                  padding={width <= 1200 ? "" : true}
+                  isActive={activeEmail}
+                  placeHolder="Phone, Email, Or Username"
+                  width="250px"
+                >
+                  <input
+                    onFocus={() => setActiveEmail(true)}
+                    onBlur={() => setActiveEmail(false)}
+                    className={input}
+                    type="text"
+                    value={email}
+                    onChange={(e) => setEmail(e.currentTarget.value)}
+                  />
+                </Wrapper>
+                {width <= 1200 && <div className={space} />}
+                <Wrapper
+                  padding={width <= 1200 ? "" : true}
+                  isActive={activePassword}
+                  placeHolder="Password"
+                  width="250px"
+                >
+                  <input
+                    onFocus={() => setActivePassword(true)}
+                    onBlur={() => setActivePassword(false)}
+                    className={input}
+                    type="password"
+                    value={password}
+                    onChange={(e) => setPassword(e.currentTarget.value)}
+                  />
+                </Wrapper>
+                {width <= 1200 && <div className={space} />}
+                <button
+                  onClick={() => setClicked(true)}
+                  type="submit"
+                  className={buttonOuter}
+                >
+                  <div className={textContainer}>
+                    <span className={text}>Login</span>
+                  </div>
+                </button>
+              </div>
               {clicked && errors}
             </div>
           </form>
