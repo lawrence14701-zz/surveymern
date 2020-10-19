@@ -24,7 +24,12 @@ class Tweet extends React.Component {
   render() {
     const { title, container } = styles;
     if (this.state.tweets.length === 0) {
-      return <div>There are no Tweets</div>;
+      return (
+        <>
+          <NavBar />
+          <div>There are no Tweets</div>
+        </>
+      );
     } else {
       return (
         <div>
