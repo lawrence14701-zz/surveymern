@@ -17,7 +17,7 @@ To be honest, I don't have a twitter, but I thought it would be a cool idea to s
 
 # Authentication 
 
-A big part of this project was user authentication and it was implemented using token based authentication, specifically using the JWT strategy.
+A big part of this project was user authentication and it was implemented using token based authentication, specifically using the JWT strategy, which was also the focus of this project.
 
 # How the JWT Strategy works 
 
