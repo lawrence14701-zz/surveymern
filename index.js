@@ -6,13 +6,6 @@ const bodyParser = require("body-parser");
 const passport = require("passport");
 const path = require("path");
 
-if (process.env.NODE_ENV === "production") {
-  app.use(express.static("frontend/build"));
-  app.get("/", (req, res) => {
-    res.sendFile(path.resolve(__dirname, "frontend", "build", "index.html"));
-  });
-}
-
 require("./config/passport")(passport);
 
 const server = express();
@@ -29,6 +22,13 @@ mongoose
 server.use(passport.initialize());
 server.use("/api/users", users);
 server.use("/api/tweets", tweets);
+
+if (process.env.NODE_ENV === "production") {
+  server.use(express.static("frontend/build"));
+  server.get("/", (req, res) => {
+    res.sendFile(path.resolve(__dirname, "frontend", "build", "index.html"));
+  });
+}
 
 const port = process.env.PORT || 5000;
 
