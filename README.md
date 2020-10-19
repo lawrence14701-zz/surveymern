@@ -11,12 +11,30 @@ To be honest, I don't have a twitter, but I thought it would be a cool idea to s
 - express server using JS
 - React using JS
 - Node.js
+- heroku (deployment)
 
 # MVPS
 - user can signup/log in
 - post tweets
 - get users profile
 - get all tweets from all users
+
+# How to set up
+
+1. clone the repo using git commands or downloading the repo
+1. In the root directory, inside your terminal, run the command $ npm run frontend-install, this script will install both dependencies on the backend and frontend.
+1. To start a local server please use the script $ npm run dev, this starts a localhost:3000 on the frontend which proxies over to the backend's localhost:5000
+1. You will notice an error inside your terminal saying "file missing, can not find key_dev.js", this is normal. The cloned repo did not include that file becuase of secret env variables. 
+1. To set up your env variables please create a keys_dev.js, inside the file place 
+```js
+module.exports = {
+  mongoURI:"your mongodb key",
+  secretOrKey: "random secret key",
+};
+```
+1. After set up a cluster from mongodb and connect it to your application using the key provided from your cluster. 
+1. Lastly, test application and database CRUD actions by creating a user, signing in, posting a tweet, and reading all tweets.
+1. if no errors occur then you are ready to start hacking!
 
 # Authentication 
 
