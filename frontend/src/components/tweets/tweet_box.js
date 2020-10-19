@@ -9,31 +9,36 @@ const TweetBox = (props) => {
     tweetRight,
     tweetContainer,
     tweet,
+    userText,
   } = styles;
 
   return (
-    <div
-      className={
-        props.direction
-          ? props.direction === "left"
-            ? tweetContainerLeft
-            : tweetContainerRight
-          : tweetContainer
-      }
-    >
-      <p
+    <>
+      <div
         className={
           props.direction
             ? props.direction === "left"
-              ? tweetLeft
-              : tweetRight
-            : tweet
+              ? tweetContainerLeft
+              : tweetContainerRight
+            : tweetContainer
         }
       >
-        {props.text}
-      </p>
-      <p>{props.user}</p>
-    </div>
+        <p
+          className={
+            props.direction
+              ? props.direction === "left"
+                ? tweetLeft
+                : tweetRight
+              : tweet
+          }
+        >
+          {props.text}
+        </p>
+      </div>
+      <div className={userText}>
+        <p>{props.user}</p>
+      </div>
+    </>
   );
 };
 

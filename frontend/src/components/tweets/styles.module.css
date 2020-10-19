@@ -115,3 +115,11 @@
   color: inherit;
   text-align: center;
 }
+.userText {
+  color: white;
+  padding: 8px;
+  display: inline-block;
+  margin-left: auto;
+  border: solid white 1px;
+  border-radius: 15px;
+}
