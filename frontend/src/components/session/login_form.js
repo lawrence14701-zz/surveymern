@@ -38,7 +38,7 @@ const LoginForm = (props) => {
   };
   return (
     <>
-      {width <= 450 ? (
+      {width <= 450 && props.location.pathname === "/" ? (
         ""
       ) : (
         <div
