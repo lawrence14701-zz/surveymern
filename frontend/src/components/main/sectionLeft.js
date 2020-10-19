@@ -5,7 +5,7 @@ import cx from "classnames";
 import windowSize from "../../hooks/windowSize";
 
 const SectionLeft = () => {
-  const [width, height] = windowSize();
+  const [width] = windowSize();
   const {
     section,
     sectionMobile,

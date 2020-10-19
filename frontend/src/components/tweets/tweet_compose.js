@@ -16,7 +16,9 @@ class TweetCompose extends React.Component {
   }
 
   componentWillReceiveProps(nextProps) {
-    this.setState({ newTweet: nextProps.newTweet.text });
+    if (nextProps.newTweet) {
+      this.setState({ newTweet: nextProps.newTweet.text });
+    }
   }
 
   handleSubmit(e) {
@@ -24,16 +26,17 @@ class TweetCompose extends React.Component {
     let tweet = {
       text: this.state.text,
     };
+    debugger;
 
     this.props.composeTweet(tweet);
     this.setState({ text: "" });
   }
 
-  update() {
-    return (e) =>
-      this.setState({
-        text: e.currentTarget.value,
-      });
+  update(e) {
+    debugger;
+    this.setState({
+      text: e.currentTarget.textContent,
+    });
   }
 
   render() {
@@ -43,7 +46,6 @@ class TweetCompose extends React.Component {
       textArea,
       textContainer,
       textAreaContainer,
-      inputContainer,
       buttonOuter,
       text,
     } = styles;
@@ -53,24 +55,22 @@ class TweetCompose extends React.Component {
         <div className={container}>
           <h2 className={title}>Post a tweet</h2>
           <div className={textAreaContainer}>
-            <div className={inputContainer}>
-              <div
-                contentEditable
-                className={textArea}
-                type="textarea"
-                value={this.state.text}
-                onChange={this.update()}
-                placeholder="Write your tweet..."
-              />
-              <button
-                onClick={() => this.handleSubmit()}
-                className={buttonOuter}
-              >
-                <div className={textContainer}>
-                  <span className={text}>Submit</span>
-                </div>
-              </button>
-            </div>
+            <div
+              contentEditable
+              className={textArea}
+              type="textarea"
+              value={this.state.text}
+              onInput={(e) => this.update(e)}
+              placeholder="Write your tweet..."
+            />
+            <button
+              onClick={(e) => this.handleSubmit(e)}
+              className={buttonOuter}
+            >
+              <div className={textContainer}>
+                <span className={text}>Submit</span>
+              </div>
+            </button>
           </div>
           <br />
           {this.state.newTweet ? (

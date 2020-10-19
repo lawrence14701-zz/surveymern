@@ -58,7 +58,7 @@ const LoginForm = (props) => {
                 <Wrapper
                   padding={width <= 1200 ? "" : true}
                   isActive={activeEmail}
-                  placeHolder="Phone, Email, Or Username"
+                  placeHolder="Email"
                   width="250px"
                 >
                   <input

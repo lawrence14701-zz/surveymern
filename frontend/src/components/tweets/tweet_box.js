@@ -21,7 +21,7 @@ const TweetBox = (props) => {
           : tweetContainer
       }
     >
-      <h3
+      <p
         className={
           props.direction
             ? props.direction === "left"
@@ -31,8 +31,8 @@ const TweetBox = (props) => {
         }
       >
         {props.text}
-      </h3>
-      <h3>{props.user}</h3>
+      </p>
+      <p>{props.user}</p>
     </div>
   );
 };

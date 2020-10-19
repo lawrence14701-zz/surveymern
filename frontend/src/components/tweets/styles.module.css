@@ -8,6 +8,7 @@
   color: rgb(113, 201, 248);
 }
 .tweetContainer {
+  overflow-wrap: break-word;
   margin: auto;
   background-color: rgb(113, 201, 248);
   margin-top: 10px;
@@ -19,6 +20,7 @@
   justify-content: space-between;
 }
 .tweetContainerLeft {
+  overflow-wrap: break-word;
   background-color: rgb(113, 201, 248);
   margin-top: 10px;
   margin-bottom: 10px;
@@ -30,6 +32,7 @@
 }
 
 .tweetContainerRight {
+  overflow-wrap: break-word;
   margin-left: auto;
   background-color: white;
   margin-top: 13px;
@@ -48,7 +51,8 @@
   padding: 15px;
 }
 .textArea {
-  width: 300px;
+  overflow-wrap: break-word;
+  width: 50%;
   min-height: 17px;
   border: 1px solid #ccc;
   max-height: 150px;
@@ -60,16 +64,11 @@
   border-radius: 10px;
 }
 .textAreaContainer {
-  margin: auto;
+  overflow-wrap: break-word;
+  margin-top: 23px;
   display: flex;
   flex-direction: column;
   align-items: center;
-  height: 30px;
-  width: 50%;
-}
-.inputContainer {
-  width: inherit;
-  height: inherit;
 }
 
 .buttonOuter {
@@ -100,6 +99,7 @@
 }
 
 .textContainer {
+  overflow-wrap: break-word;
   color: rgba(29, 161, 242, 1);
   text-align: center;
   max-width: 100%;

@@ -43,7 +43,7 @@ class Tweet extends React.Component {
                   direction={direction}
                   key={tweet._id}
                   text={tweet.text}
-                  user={this.props.currentUser.handle}
+                  user={tweet.handle}
                 />
               );
             })}
