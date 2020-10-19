@@ -1,47 +1,60 @@
-import React from 'react';
-import { Link } from 'react-router-dom';
+import React from "react";
+import { Link } from "react-router-dom";
+import styles from "./styles.module.css";
+import { Bird } from "./svg";
 
 class NavBar extends React.Component {
-	constructor(props) {
-		super(props);
-		this.logoutUser = this.logoutUser.bind(this);
-		this.getLinks = this.getLinks.bind(this);
-	}
+  constructor(props) {
+    super(props);
+    this.logoutUser = this.logoutUser.bind(this);
+    this.getLinks = this.getLinks.bind(this);
+  }
 
-	logoutUser(e) {
-		e.preventDefault();
-		this.props.logout();
-	}
+  logoutUser(e) {
+    e.preventDefault();
+    this.props.logout();
+  }
 
-	// Selectively render links dependent on whether the user is logged in
-	getLinks() {
-		if (this.props.loggedIn) {
-			return (
-				<div>
-					<Link to={'/tweets'}>All Tweets</Link>
-					<Link to={'/profile'}>Profile</Link>
-					<Link to={'/new_tweet'}>Write a Tweet</Link>
-					<button onClick={this.logoutUser}>Logout</button>
-				</div>
-			);
-		} else {
-			return (
-				<div>
-					<Link to={'/signup'}>Signup</Link>
-					<Link to={'/login'}>Login</Link>
-				</div>
-			);
-		}
-	}
+  // Selectively render links dependent on whether the user is logged in
+  getLinks() {
+    const { link } = styles;
+    if (this.props.loggedIn) {
+      return (
+        <>
+          <Link className={link} to={"/tweets"}>
+            All Tweets
+          </Link>
+          <Link className={link} to={"/profile"}>
+            Profile
+          </Link>
+          <Link className={link} to={"/new_tweet"}>
+            Write a Tweet
+          </Link>
+          <button onClick={this.logoutUser}>Logout</button>
+        </>
+      );
+    } else {
+      return (
+        <>
+          <Link className={link} to={"/"}>
+            Login
+          </Link>
+        </>
+      );
+    }
+  }
 
-	render() {
-		return (
-			<div>
-				<h1>Chirper</h1>
-				{this.getLinks()}
-			</div>
-		);
-	}
+  render() {
+    const { containerNav, nav } = styles;
+    return (
+      <div className={containerNav}>
+        <div className={nav}>
+          <Bird />
+          {this.getLinks()}
+        </div>
+      </div>
+    );
+  }
 }
 
 export default NavBar;

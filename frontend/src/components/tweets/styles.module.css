@@ -1,0 +1,117 @@
+.tweetLeft {
+  color: white;
+}
+.tweet {
+  color: black;
+}
+.tweetRight {
+  color: rgb(113, 201, 248);
+}
+.tweetContainer {
+  margin: auto;
+  background-color: rgb(113, 201, 248);
+  margin-top: 10px;
+  margin-bottom: 10px;
+  padding: 10px;
+  width: 85%;
+  border-radius: 12px;
+  display: flex;
+  justify-content: space-between;
+}
+.tweetContainerLeft {
+  background-color: rgb(113, 201, 248);
+  margin-top: 10px;
+  margin-bottom: 10px;
+  padding: 10px;
+  width: 85%;
+  border-radius: 12px;
+  display: flex;
+  justify-content: space-between;
+}
+
+.tweetContainerRight {
+  margin-left: auto;
+  background-color: white;
+  margin-top: 13px;
+  margin-bottom: 10px;
+  padding: 10px;
+  width: 85%;
+  border-radius: 12px;
+  display: flex;
+  justify-content: space-between;
+}
+.title {
+  color: rgb(113, 201, 248);
+  margin-left: 5px;
+}
+.container {
+  padding: 15px;
+}
+.textArea {
+  width: 300px;
+  min-height: 17px;
+  border: 1px solid #ccc;
+  max-height: 150px;
+  overflow-x: hidden;
+  overflow-y: auto;
+  color: white;
+  font-size: 20px;
+  padding: 10px;
+  border-radius: 10px;
+}
+.textAreaContainer {
+  margin: auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  height: 30px;
+  width: 50%;
+}
+.inputContainer {
+  width: inherit;
+  height: inherit;
+}
+
+.buttonOuter {
+  justify-content: center;
+  display: flex;
+  align-items: center;
+  outline-style: none;
+  border-width: 1px;
+  border-color: rgb(29, 161, 242);
+  border-radius: 9999px;
+  border-style: solid;
+  margin-bottom: 5px;
+  min-width: calc(62.79px);
+  min-height: 39px;
+  height: 0px;
+  padding-left: 1em;
+  padding-right: 1em;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 20px;
+}
+.buttonOuter:hover {
+  cursor: pointer;
+  transition-duration: 0.2s;
+  transition-property: background-color, box-shadow;
+  background-color: rgba(29, 161, 242, 0.1);
+}
+
+.textContainer {
+  color: rgba(29, 161, 242, 1);
+  text-align: center;
+  max-width: 100%;
+  display: flex;
+  line-height: 1;
+}
+.text {
+  font-weight: bold;
+  line-height: 1.3125;
+  max-width: 100%;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  color: inherit;
+  text-align: center;
+}

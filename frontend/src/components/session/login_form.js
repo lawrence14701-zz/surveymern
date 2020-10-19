@@ -13,6 +13,7 @@ const LoginForm = (props) => {
     inputsFlexContainer,
     inputsContainer,
     space,
+    centerLogin,
   } = loginStyles;
   const { buttonOuter, textContainer, text } = loginButtonStyles;
 
@@ -34,19 +35,24 @@ const LoginForm = (props) => {
 
     props.login(user);
   };
-
   return (
     <>
       {width <= 450 ? (
         ""
       ) : (
-        <div className={loginContainer}>
+        <div
+          className={
+            props.history.location.pathname === "/login"
+              ? centerLogin
+              : loginContainer
+          }
+        >
           <form onSubmit={handleSubmit}>
             <div
               className={width >= 1200 ? inputsContainer : inputsFlexContainer}
             >
               <Wrapper
-                padding={width <= 1200 ? false : true}
+                padding={width <= 1200 ? "" : true}
                 isActive={activeEmail}
                 placeHolder="Phone, Email, Or Username"
                 width="250px"
@@ -62,7 +68,7 @@ const LoginForm = (props) => {
               </Wrapper>
               {width <= 1200 && <div className={space} />}
               <Wrapper
-                padding={width <= 1200 ? false : true}
+                padding={width <= 1200 ? "" : true}
                 isActive={activePassword}
                 placeHolder="Password"
                 width="250px"

@@ -1,38 +1,58 @@
-import React from 'react';
-import { withRouter } from 'react-router-dom';
-import TweetBox from './tweet_box';
+import React from "react";
+import { withRouter } from "react-router-dom";
+import TweetBox from "./tweet_box";
+import NavBar from "../nav/navbar_container";
+import styles from "./styles.module.css";
 
 class Tweet extends React.Component {
-	constructor(props) {
-		super(props);
+  constructor(props) {
+    super(props);
 
-		this.state = {
-			tweets: [],
-		};
-	}
+    this.state = {
+      tweets: [],
+    };
+  }
 
-	componentWillMount() {
-		this.props.fetchTweets();
-	}
+  componentWillMount() {
+    this.props.fetchTweets();
+  }
 
-	componentWillReceiveProps(newState) {
-		this.setState({ tweets: newState.tweets });
-	}
+  componentWillReceiveProps(newState) {
+    this.setState({ tweets: newState.tweets });
+  }
 
-	render() {
-		if (this.state.tweets.length === 0) {
-			return <div>There are no Tweets</div>;
-		} else {
-			return (
-				<div>
-					<h2>All Tweets</h2>
-					{this.state.tweets.map((tweet) => (
-						<TweetBox key={tweet._id} text={tweet.text} />
-					))}
-				</div>
-			);
-		}
-	}
+  render() {
+    const { title, container } = styles;
+    if (this.state.tweets.length === 0) {
+      return <div>There are no Tweets</div>;
+    } else {
+      return (
+        <div>
+          <NavBar />
+          <div className={container}>
+            <h2 className={title}>All Tweets</h2>
+            {this.state.tweets.map((tweet, index) => {
+              let direction = "";
+              debugger;
+              if (index % 2 === 0) {
+                direction = "left";
+              } else {
+                direction = "right";
+              }
+              return (
+                <TweetBox
+                  direction={direction}
+                  key={tweet._id}
+                  text={tweet.text}
+                  user={this.props.currentUser.handle}
+                />
+              );
+            })}
+          </div>
+        </div>
+      );
+    }
+  }
 }
 
 export default withRouter(Tweet);

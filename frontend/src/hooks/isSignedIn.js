@@ -4,7 +4,6 @@ import styles from "./styles.module.css";
 const IsSignedIn = (props) => {
   const [errors, setErrors] = useState([]);
   const { errorList } = styles;
-
   useEffect(() => {
     if (props.signedIn === true) {
       props.history.push("/login");

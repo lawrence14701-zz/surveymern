@@ -7,6 +7,18 @@
   padding-left: 15px;
   padding-right: 15px;
 }
+.centerLogin {
+  display: flex;
+  position: absolute;
+  top: 20%;
+  left: 50%;
+  transform: translate(-50%, 0);
+  max-width: unset;
+  align-items: center;
+  padding: 15px;
+  border: solid rgb(113, 201, 248);
+  border-radius: 15px;
+}
 .inputsFlexContainer {
   display: flex;
   flex-direction: column;

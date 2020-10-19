@@ -1,13 +1,40 @@
-import React from 'react';
+import React from "react";
+import styles from "./styles.module.css";
 
-class TweetBox extends React.Component {
-	render() {
-		return (
-			<div>
-				<h3>{this.props.text}</h3>
-			</div>
-		);
-	}
-}
+const TweetBox = (props) => {
+  const {
+    tweetContainerLeft,
+    tweetContainerRight,
+    tweetLeft,
+    tweetRight,
+    tweetContainer,
+    tweet,
+  } = styles;
+
+  return (
+    <div
+      className={
+        props.direction
+          ? props.direction === "left"
+            ? tweetContainerLeft
+            : tweetContainerRight
+          : tweetContainer
+      }
+    >
+      <h3
+        className={
+          props.direction
+            ? props.direction === "left"
+              ? tweetLeft
+              : tweetRight
+            : tweet
+        }
+      >
+        {props.text}
+      </h3>
+      <h3>{props.user}</h3>
+    </div>
+  );
+};
 
 export default TweetBox;
