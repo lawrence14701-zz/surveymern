@@ -33,7 +33,6 @@ class Tweet extends React.Component {
             <h2 className={title}>All Tweets</h2>
             {this.state.tweets.map((tweet, index) => {
               let direction = "";
-              debugger;
               if (index % 2 === 0) {
                 direction = "left";
               } else {
