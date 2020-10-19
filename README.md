@@ -1,5 +1,8 @@
 # Tweeter (A social app that emulates Twitters design)
 
+# [Link to the live project](https://tweetertweeter.herokuapp.com/#/)
+
+
 # Summary
 To be honest, I don't have a twitter, but I thought it would be a cool idea to start my #100days100Apps challenge with a MERN stack project. 
 
