@@ -1,4 +1,5 @@
 # Tweeter (A social app that emulates Twitters design)
+(Day one of challenge)
 
 # [Link to the live project](https://tweetertweeter.herokuapp.com/#/)
 
