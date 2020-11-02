@@ -1,7 +1,7 @@
 const express = require("express");
 const mongoose = require("mongoose");
 const users = require("./routes/api/users");
-const tweets = require("./routes/api/tweets");
+const surveys = require("./routes/api/surveys");
 const bodyParser = require("body-parser");
 const passport = require("passport");
 const path = require("path");
@@ -21,7 +21,7 @@ mongoose
 
 server.use(passport.initialize());
 server.use("/api/users", users);
-server.use("/api/tweets", tweets);
+server.use("/api/surveys", surveys);
 
 if (process.env.NODE_ENV === "production") {
   server.use(express.static("frontend/build"));
