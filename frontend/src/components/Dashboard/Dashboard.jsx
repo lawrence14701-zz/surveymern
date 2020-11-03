@@ -50,7 +50,7 @@ function Dashboard() {
     } else if (who === "trump") {
       selectType = false;
     }
-    const newValue = `${currentUser} ${value}`;
+    const newValue = `${currentUser} says: ${value}`;
     const information = {
       who: selectType,
       text: newValue,

@@ -23,8 +23,7 @@ export default function Results() {
   const classes = useStyles();
 
   const [data, setData] = React.useState();
-  //   const [pointsTrump, setPointsTrump] = React.useState(0);
-  //   const [comments, setComments] = React.useState([]);
+
   useEffect(() => {
     axios
       .get(`/api/surveys`)
@@ -96,12 +95,12 @@ export default function Results() {
         </Card>
       </div>
       <div className="comments">
-        {commentsArr.map((comment) => (
+        {commentsArr.map((comment, i) => (
           <div
             className={
               comment.type === "joe" ? "singleCommentBlue" : "singleCommentRed"
             }
-            key={comment.text}
+            key={`${comment.text}${i}`}
           >
             {comment.text}
           </div>
