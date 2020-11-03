@@ -6,31 +6,11 @@ const TweetSchema = new Schema({
     type: Schema.Types.ObjectId,
     ref: "users",
   },
-  economy: {
-    type: Boolean,
-    required: true,
+  email: {
+    type: String,
+    ref: "users",
   },
-  racial: {
-    type: Boolean,
-    required: true,
-  },
-  diplomacy: {
-    type: Boolean,
-    required: true,
-  },
-  environment: {
-    type: Boolean,
-    required: true,
-  },
-  healthcare: {
-    type: Boolean,
-    required: true,
-  },
-  security: {
-    type: Boolean,
-    required: true,
-  },
-  covid: {
+  who: {
     type: Boolean,
     required: true,
   },

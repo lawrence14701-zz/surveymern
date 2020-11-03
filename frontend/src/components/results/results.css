@@ -1,0 +1,36 @@
+.votesContainer {
+  display: flex;
+  justify-content: space-around;
+}
+
+.comments {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+}
+
+.singleCommentBlue {
+  text-align: center;
+  font-size: 20px;
+  font-weight: bold;
+  color: white;
+  background-color: blue;
+  border-radius: 20px;
+  width: 50%;
+  margin-left: 20px;
+  padding: 10px;
+  margin-bottom: 20px;
+}
+
+.singleCommentRed {
+  text-align: center;
+  font-size: 20px;
+  font-weight: bold;
+  color: white;
+  background-color: red;
+  border-radius: 20px;
+  width: 50%;
+  margin-left: auto;
+  padding: 10px;
+  margin-bottom: 20px;
+}
