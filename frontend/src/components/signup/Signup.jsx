@@ -80,7 +80,7 @@ export default function SignInSide() {
       <Grid item xs={12} sm={8} md={5} component={Paper} elevation={6} square>
         <div className={classes.paper}>
           <Typography component="h1" variant="h5">
-            Sign Up
+            Sign Up, your username will be displayed on the survey
           </Typography>
           {error && <Alert severity="error">{error}</Alert>}
           <form onSubmit={handleSignIn} className={classes.form} noValidate>
