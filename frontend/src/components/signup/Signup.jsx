@@ -1,10 +1,9 @@
-import React, { useRef } from "react";
+import React, { useRef, useState } from "react";
 import { Card, Form, Button, Alert } from "react-bootstrap";
-import PropTypes from "prop-types";
-import e from "express";
+import { Link } from "react-router-dom";
+import axios from "axios";
 
-function Signup(props) {
-  const {} = props;
+function Signup() {
   const emailRef = useRef();
   const passwordRef = useRef();
   const passwordConfirmRef = useRef();
@@ -14,6 +13,19 @@ function Signup(props) {
 
   const handleSubmit = (e) => {
     e.preventDefault();
+    const user = {
+      email: emailRef,
+      password: passwordRef,
+      password2: passwordConfirmRef,
+    };
+    try {
+      axios.post(`/api/users/register`, user).then((res) => {
+        console.log(res);
+        setSuccess("An email verification code was sent to your email");
+      });
+    } catch (error) {
+      setError("Unable to create account please check password and email");
+    }
   };
 
   return (
@@ -41,7 +53,6 @@ function Signup(props) {
             </Button>
           </Form>
         </Card.Body>
-        <GoogleButton />
       </Card>
       <div className="w-100 text-center mt-2">
         Already have an account? <Link to="/login">Log In</Link>
@@ -49,7 +60,5 @@ function Signup(props) {
     </>
   );
 }
-
-Signup.propTypes = {};
 
 export default Signup;
