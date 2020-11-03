@@ -4,6 +4,9 @@ const users = require("./routes/api/users");
 const surveys = require("./routes/api/surveys");
 const bodyParser = require("body-parser");
 const path = require("path");
+const passport = require("passport");
+
+require("./config/passport")(passport);
 
 const server = express();
 //**! Returns middleware that only parses json and only looks at requests where the Content-Type header matches the type option*/
