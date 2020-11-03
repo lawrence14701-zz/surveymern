@@ -5,8 +5,6 @@ const surveys = require("./routes/api/surveys");
 const bodyParser = require("body-parser");
 const path = require("path");
 
-require("./config/passport")(passport);
-
 const server = express();
 //**! Returns middleware that only parses json and only looks at requests where the Content-Type header matches the type option*/
 server.use(bodyParser.urlencoded({ extended: false }));
