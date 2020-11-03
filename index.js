@@ -3,10 +3,7 @@ const mongoose = require("mongoose");
 const users = require("./routes/api/users");
 const surveys = require("./routes/api/surveys");
 const bodyParser = require("body-parser");
-const passport = require("passport");
 const path = require("path");
-
-require("./config/passport")(passport);
 
 const server = express();
 //**! Returns middleware that only parses json and only looks at requests where the Content-Type header matches the type option*/
@@ -19,7 +16,6 @@ mongoose
   .then(() => console.log("Connected to MongoDB successfully"))
   .catch((err) => console.log(err));
 
-server.use(passport.initialize());
 server.use("/api/users", users);
 server.use("/api/surveys", surveys);
 
