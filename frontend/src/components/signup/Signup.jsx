@@ -67,14 +67,16 @@ export default function SignInSide() {
       password: signupPassword,
       password2: confirmPassword,
     };
-    try {
-      axios.post(`/api/users/register`, user).then((res) => {
+    axios
+      .post(`/api/users/register`, user)
+      .then((res) => {
         console.log(res);
         setSuccess("An email verification code was sent to your email");
+      })
+      .catch((err) => {
+        debugger;
+        setError("Failed to create account please check email and password");
       });
-    } catch (error) {
-      setError("Unable to create account please check password and email");
-    }
   };
 
   const classes = useStyles();
@@ -89,8 +91,8 @@ export default function SignInSide() {
             <Typography component="h1" variant="h5">
               Sign in
             </Typography>
-            {error && <Alert variant="danger">{error}</Alert>}
-            {success && <Alert variant="success">{success}</Alert>}
+            {error && <Alert severity="error">{error}</Alert>}
+            {success && <Alert severity="success">{success}</Alert>}
             <form className={classes.form} noValidate>
               <TextField
                 onInput={(e) => setSigninEmail(e.target.value)}

@@ -6,7 +6,7 @@ function App() {
   return (
     <div>
       <Router>
-        <Signup />
+        <Route component={Signup} path="/" />
       </Router>
     </div>
   );
