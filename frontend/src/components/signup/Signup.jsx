@@ -106,6 +106,13 @@ export default function SignInSide() {
               Sign Up
             </Button>
           </form>
+          <Button
+            color="secondary"
+            variant="contained"
+            onClick={() => history.push("/results")}
+          >
+            Show Results
+          </Button>
         </div>
       </Grid>
     </Grid>
