@@ -25,7 +25,7 @@ server.use("/api/surveys", surveys);
 
 if (process.env.NODE_ENV === "production") {
   server.use(express.static("frontend/build"));
-  server.get("/", (req, res) => {
+  server.get("*", (req, res) => {
     res.sendFile(path.resolve(__dirname, "frontend", "build", "index.html"));
   });
 }
