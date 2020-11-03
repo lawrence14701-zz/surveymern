@@ -5,6 +5,8 @@ const surveys = require("./routes/api/surveys");
 const bodyParser = require("body-parser");
 const path = require("path");
 
+require("./config/passport")(passport);
+
 const server = express();
 //**! Returns middleware that only parses json and only looks at requests where the Content-Type header matches the type option*/
 server.use(bodyParser.urlencoded({ extended: false }));
@@ -16,6 +18,7 @@ mongoose
   .then(() => console.log("Connected to MongoDB successfully"))
   .catch((err) => console.log(err));
 
+server.use(passport.initialize());
 server.use("/api/users", users);
 server.use("/api/surveys", surveys);
 
@@ -26,8 +29,6 @@ if (process.env.NODE_ENV === "production") {
   });
 }
 
-const PORT = process.env.PORT || 5000;
+const port = process.env.PORT || 5000;
 
-server.listen(PORT, () => {
-  console.log("server has started");
-});
+server.listen(port, () => console.log(`Server is running on port ${port}`));
